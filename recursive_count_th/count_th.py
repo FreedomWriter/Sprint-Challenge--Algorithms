@@ -9,11 +9,16 @@ def count_th(word):
     if word == "":
         return 0
 
+    if len(word) == 1:
+        return 0
     # recursive case
-    if word[1] and word[0] + word[1] == "th":
-        return 1 + count_th(word[2:])
-    else:
-        return 0 + count_th(word[2:])
+    if word[0]  == "t":
+        if word[1] == 'h':
+            return 1 + count_th(word[1:])
+        else:
+            return 0 + count_th(word[1:])
+
+    return count_th(word[1:])
     
 
-print(count_th("wordthththth"))
+print(count_th("abcthefthghith"))
