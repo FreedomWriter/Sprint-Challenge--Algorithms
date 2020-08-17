@@ -98,18 +98,24 @@ class SortingRobot:
         """
         self.set_light_on()
         
-      
-            # check if there is right first 
-            
-                #move the robot next to right
-                
-                # compare - if robot's current_card is than the next card (1), swap  
-                
+        
+        while self.light_is_on():
+            # swap the first item with None, to use when moving left
+            print(f"light on before swap: {l}")
+            self.swap_item()
+            print(f"light on after swap: {l}")
+            # can we move right?
+            while self.can_move_right():
+                self.move_right()
+                # if robot's current_card is higher than the next card (1), swap   
+                if self.compare_item() == 1:
+                    self.swap_item()
+           
+            self.set_light_off()
 
-            
-            # move backwards until we hit the start of the list
-            
-            #compare - if current card is less than previous card (-1), swap
+  
+            if not self.can_move_right(): 
+                return self.set_light_off()
             
         
 
